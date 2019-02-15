@@ -1,3 +1,5 @@
+// Monoton Stack
+// 我们对低洼的地方感兴趣，就可以使用一个单调递减栈，将递减的边界存进去，一旦发现当前的数字大于栈顶元素了，那么就有可能会有能装水的地方产生。
 class Solution {
 public:
     int trap(vector<int>& height) {
