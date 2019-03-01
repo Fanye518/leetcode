@@ -15,6 +15,8 @@
 ## Stack
 ```
 42. Trapping Rain Water
+85. Maximal Rectangle
+    Monotonic stack for 2d array
 ```
 ## Binary Search Tree
 ```
