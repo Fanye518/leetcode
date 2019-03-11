@@ -7,7 +7,6 @@
 ```
 773. Sliding Puzzle
 864. Shortest Path to Get All Keys
-907. Sum of Subarray Minimums
 ```
 ## Topological Sort
 ```
@@ -18,6 +17,7 @@
 42. Trapping Rain Water
 85. Maximal Rectangle
     Monotonic stack for 2d array
+907. Sum of Subarray Minimums
 ```
 ## Binary Search Tree
 ```
