@@ -18,6 +18,7 @@
 85. Maximal Rectangle
     Monotonic stack for 2d array
 239. Sliding Window Maximum
+255. Verify Preorder Sequence in Binary Search Tree
 907. Sum of Subarray Minimums
 ```
 ## Binary Search Tree
@@ -25,6 +26,7 @@
 99. Recover Binary Search Tree
 109. Convert Sorted List to Binary Search Tree
 116. Populating Next Right Pointers in Each Node
+255. Verify Preorder Sequence in Binary Search Tree
 ```
 ## Dynamic Programming
 ```
