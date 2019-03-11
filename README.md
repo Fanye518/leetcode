@@ -12,11 +12,12 @@
 ```
 269. Alien Dictionary
 ```
-## Stack
+## Monotonic stack
 ```
 42. Trapping Rain Water
 85. Maximal Rectangle
     Monotonic stack for 2d array
+239. Sliding Window Maximum
 907. Sum of Subarray Minimums
 ```
 ## Binary Search Tree
