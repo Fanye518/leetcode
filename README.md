@@ -30,3 +30,7 @@
 ```
 265. Paint House II
 ```
+## Linked List
+```
+146. LRU Cache
+```
