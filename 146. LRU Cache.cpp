@@ -1,9 +1,9 @@
 class Node{
     private:
-        int val;
+        int key,val;
         Node *prev,*next;
     public:
-        Node(int v):val(v),prev(NULL),next(NULL){}
+        Node(int k,int v):key(k),val(v),prev(NULL),next(NULL){}
         friend class LRUCache;
         friend ostream& operator<<(ostream& os, Node* head);
 };
@@ -11,7 +11,7 @@ class Node{
 ostream& operator<<(ostream& os, Node* head){
     Node* tmp=head;
     while(tmp){
-        os<<tmp->val;
+        os<<tmp->key;
         tmp=tmp->next;
     }
     return os;
@@ -20,7 +20,6 @@ ostream& operator<<(ostream& os, Node* head){
 class LRUCache {
     private:
     int capacity;
-    unordered_map<int,int> record;
     Node *head,*tail;
     unordered_map<int,Node*>key_pos;
     
@@ -30,10 +29,10 @@ public:
         head = NULL;
         tail = NULL;
     }
-    void insertKey(int key){
+    void insertKey(int key, int value){
         // cout<<"insert:"<<key<<endl;
-        Node *tmp = new Node(key);
-        if(record.size()==0){
+        Node *tmp = new Node(key,value);
+        if(key_pos.size()==0){
             head = tmp;
             tail = head;
         }
@@ -46,7 +45,7 @@ public:
     }
     void deleteKey(){
         // cout<<"delete:"<<head->val<<endl;
-        key_pos.erase(head->val);
+        key_pos.erase(head->key);
         Node *tmp=head;
         head=head->next;
         delete tmp;
@@ -56,7 +55,7 @@ public:
     void updateKey(int key){
         // cout<<"update:"<<key<<endl;
         if(head == tail)return ;
-        Node *tmp = key_pos[key];
+        Node *tmp=key_pos[key];
         if(tmp == head){
             head = head->next;
             head->prev=NULL;
@@ -77,28 +76,25 @@ public:
     
     int get(int key) {
         // cout<<"get("<<key<<")"<<endl;
-        if(record.find(key)==record.end())return -1;
+        if(key_pos.find(key)==key_pos.end())return -1;
         updateKey(key);
         // cout<<head<<":"<<tail->val<<endl;
-        return record[key];
+        return key_pos[key]->val;
     }
     
     void put(int key, int value) {
         // cout<<"put("<<key<<")"<<endl;
-        if(record.find(key)!=record.end()){
+        if(key_pos.find(key)!=key_pos.end()){
             updateKey(key);
-            record[key]=value;
+            key_pos[key]->val = value;
         }
         else{
-            if(record.size()<capacity){
-                insertKey(key);
-                record[key]=value;
+            if(key_pos.size()<capacity){
+                insertKey(key,value);
             }
             else{
-                record.erase(head->val);
                 deleteKey();
-                insertKey(key);
-                record[key]=value;
+                insertKey(key,value);
             }
         }
         // cout<<head<<":"<<tail->val<<endl;
