@@ -8,6 +8,10 @@
 773. Sliding Puzzle
 864. Shortest Path to Get All Keys
 ```
+## Depth First Search
+```
+996. Number of Squareful Arrays
+```
 ## Topological Sort
 ```
 269. Alien Dictionary
@@ -36,4 +40,9 @@
 ## Linked List
 ```
 146. LRU Cache
+```
+## Priority Queue
+```
+857. Minimum Cost to Hire K Workers
+373. Find K Pairs with Smallest Sums
 ```
