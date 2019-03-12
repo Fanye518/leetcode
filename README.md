@@ -31,6 +31,7 @@
 ## Dynamic Programming
 ```
 265. Paint House II
+361. Bomb Enemy
 ```
 ## Linked List
 ```
