@@ -20,60 +20,64 @@ public:
 
 class Solution {
     public:
-    Node* connect(Node* root){
-        if (root == NULL) return NULL;
-        Node *pre = root;
-        Node *cur = NULL;
-        while(pre->left) {
-            cur = pre;
-            while(cur) {
-                cur->left->next = cur->right;
-                if(cur->next) cur->right->next = cur->next->left;
-                cur = cur->next;
-            }
-            pre = pre->left;
-        }
-        return root;
-    }
-
-};
-
-// class Solution {
-//     private: Node *prev,*head;
-// public:
-//     void inorder(Node* root){
-//         if(root->left && root->right){
-//             inorder(root->left);
-//             prev->next = root;
-//             prev = root;
-//             inorder(root->right);
-//         }
-//         else{
-//             if(prev){
-//                 prev->next = root;
-//                 prev = root;
-//             }
-//             else {
-//                 prev = root;
-//                 head = root;
-//             }
-//         }
+    
+//     BFS with O(1) space
+    
+    // Node* connect(Node* root){
+    //     // unordered_map<Node*,int>m;
+    //     if (root == NULL) return NULL;
+    //     Node *pre = root;
+    //     Node *cur = NULL;
+    //     while(pre->left) {
+    //         cur = pre;
+    //         // m[cur]=cur->val;
+    //         while(cur) {
+    //             cur->left->next = cur->right;
+    //             if(cur->next) cur->right->next = cur->next->left;
+    //             cur = cur->next;
+    //         }
+    //         pre = pre->left;
+    //     }
+    //     return root;
+    // }
+    
+    
+    // DFS with O(1) space
+    
+//     void dfs(Node* start, Node* end) {
+//         if(start && end) start->next = end;
+//         if(start) dfs(start->left, start->right);
+//         if(start && end) dfs(start->right, end->left);
+//         if(end) dfs(end->left, end->right);
 //     }
+    
 //     Node* connect(Node* root) {
-//         if(!root)return root;
-//         prev = NULL;
-//         inorder(root);
-//         while(head->next){
-//             Node* temp = head->next;
-//             Node* slow = head;
-//             Node *fast,*slow_next;
-//             while(slow_next=slow->next){
-//                 fast = slow->next->next;
-//                 slow->next = fast;
-//                 slow = slow_next;
-//             }  
-//             head = temp;
-//         }
+//         if(!root) return root;
+//         dfs(root, nullptr);
 //         return root;
 //     }
-// };
+    
+    
+//  BFS   
+    
+    Node* connect(Node* root){
+        if(!root)return root;
+        queue<Node*>q;
+        q.push(root);
+        while(q.size()){
+            int qsize = q.size();
+            Node *node = q.front();q.pop();
+            if(node->left)q.push(node->left);
+            if(node->right)q.push(node->right);
+            // cout<<node->val<<" ";
+            for(int i=1;i<qsize;i++){
+                node->next = q.front();q.pop();
+                node = node->next;
+                if(node->left)q.push(node->left);
+                if(node->right)q.push(node->right);
+            }
+        }
+        return root;
+        
+    }
+};
